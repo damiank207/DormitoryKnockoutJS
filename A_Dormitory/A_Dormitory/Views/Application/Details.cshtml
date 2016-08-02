@@ -1,0 +1,114 @@
+﻿@model A_Dormitory.Models.ApplicationModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ApplicationModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CitizenshipDictModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CitizenshipDictModel.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseDictModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseDictModel.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseYearDictModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseYearDictModel.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GenderDictModel.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GenderDictModel.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AcademicYearOfStudies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcademicYearOfStudies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollegeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollegeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IndexNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IndexNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

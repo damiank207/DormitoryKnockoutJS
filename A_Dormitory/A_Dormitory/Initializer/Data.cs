@@ -8,9 +8,32 @@ namespace A_Dormitory.Initializer
 {
     public static class Data
     {
+        public static List<NumberOfBedDictModel> NumberOfBed()
+        {
+            var list = new List<NumberOfBedDictModel>()
+            {
+                new NumberOfBedDictModel() {Name ="Single room",Code="single" },
+                new NumberOfBedDictModel() {Name ="Double room",Code="double" }
+            };
+            return list;
+        }
+        public static List<GenderDictModel> Gender()
+        {
+            var gender = new List<GenderDictModel>()
+            {
+                new GenderDictModel() {Name = "Male",Code="sex_m" },
+                new GenderDictModel() {Name = "Female",Code="sex_f" }
+            };
+            return gender;
+        }
         public static List<CourseYearDictModel> CourseYear()
         {
-            var courseYear = new List<CourseYearDictModel>();
+            var courseYear = new List<CourseYearDictModel>()
+            {
+                new CourseYearDictModel() {Name = "2014/2015", Code = "2014/2015" },
+                new CourseYearDictModel() {Name = "2015/2016", Code = "2016/2015" },
+                new CourseYearDictModel() {Name = "2016/2017", Code = "2016/2017" }
+            };
             return courseYear;
         }
         public static List<CourseDictModel> Courses()
