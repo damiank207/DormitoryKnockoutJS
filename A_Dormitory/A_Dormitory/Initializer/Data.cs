@@ -8,6 +8,21 @@ namespace A_Dormitory.Initializer
 {
     public static class Data
     {
+        public static List<CourseYearDictModel> CourseYear()
+        {
+            var courseYear = new List<CourseYearDictModel>();
+            return courseYear;
+        }
+        public static List<CourseDictModel> Courses()
+        {
+            var courses = new List<CourseDictModel>()
+            {
+                new CourseDictModel() {Name = "4 years",Code="4year" },
+                new CourseDictModel() {Name = "5 years",Code="5year" },
+                new CourseDictModel() {Name = "6 years",Code="6year" }
+            };
+            return courses;
+        }
         public static List<CitizenshipDictModel> Citizenships()
         {
             var citizenships = new List<CitizenshipDictModel>()
