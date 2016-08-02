@@ -118,4 +118,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function ApplicationViewModel()
+        {
+            var self = this;
+            
+            //Data
+
+            self.citizenship = ko.observable();
+        }
+        ko.applyBindings(new ApplicationViewModel());
+    </script>
 }
