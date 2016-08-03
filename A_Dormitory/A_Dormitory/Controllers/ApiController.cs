@@ -16,5 +16,21 @@ namespace A_Dormitory.Controllers
         {
             return Json(db.CitizenshipDict, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Course()
+        {
+            return Json(db.CourseDict, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CourseYear()
+        {
+            return Json(db.CourseYearDict, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Gender()
+        {
+            return Json(db.GenderDict, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult NumberOfBed()
+        {
+            return Json(db.NumberOfBedDict, JsonRequestBehavior.AllowGet);
+        }
     }
 }
