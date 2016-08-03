@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Initializer\Data.cs" />
     <Compile Include="Initializer\DictInitializer.cs" />
+    <Compile Include="Models\ApplicationJsonModel.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\Dicts\CourseYearDictModel.cs" />
     <Compile Include="Models\Dicts\CitizenshipDictModel.cs" />

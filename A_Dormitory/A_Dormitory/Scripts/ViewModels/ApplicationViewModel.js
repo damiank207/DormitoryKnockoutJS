@@ -24,6 +24,33 @@ function ApplicationViewModel() {
     self.numberOfBed = ko.observableArray();
 
     self.saveCompleted = ko.observable(false);
+    self.sending = ko.observable(false);
+
+    self.validateAndSave = function (form) {
+        self.sending(true);
+        var jsonData = JSON.parse(ko.toJSON(self.application));
+        $.ajax({
+            url: "/Application/Create",
+            data: jsonData,
+            type: 'POST',
+        });
+        //$.post("/Application/Create", jsonData, function (returnedData) {
+        //    // This callback is executed if the post was successful     
+        //})
+    };
+    self.successfulSave = function () {
+        self.saveCompleted(true);
+        $('.body-content').prepend(
+            '<div class="alert alert-success"><strong>Powodzenie!</strong>Nowy autor został zapisany</div>');
+        setTimeout(function () {
+            location.href = './';
+
+        }, 1000);
+    };
+    self.errorSave = function () {
+        $('.body-content').prepend(
+           '<div class="alert alert-alert"><strong>Błąd!</strong>Wystąpił błąd podczas zapisywania autora</div>');
+    };
 
     self.application = {
         FirstName: ko.observable(),

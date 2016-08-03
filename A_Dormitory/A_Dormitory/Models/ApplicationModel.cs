@@ -1,4 +1,5 @@
-﻿using System;
+﻿using A_Dormitory.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,31 @@ namespace A_Dormitory.Models
 {
     public class ApplicationModel : MyBaseModel
     {
+
+        public ApplicationModel(ApplicationJsonModel jsonData)
+        {
+            DormitoryContext db = new DormitoryContext();
+            Id = Guid.NewGuid();
+            var dateArray = jsonData.DateOfBirth.Split('-').Select(x => Convert.ToInt32(x)).ToArray();
+            DateOfBirth = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+            FirstName = jsonData.FirstName;
+            Surname = jsonData.Surname;
+            AcademicYearOfStudies = Convert.ToUInt32(jsonData.AcademicYearOfStudies);
+            CitizenshipDictModelId = db.CitizenshipDict.First(x => x.Code == jsonData.CitizenshipDictCode).Id;
+
+            CourseDictModelId = db.CourseDict.First(x => x.Code == jsonData.CourseDictKey).Id;
+            GenderDictModelId = db.GenderDict.First(x => x.Code == jsonData.GenderDictKey).Id;
+            EmailAdress = jsonData.EmailAdress;
+            CollegeId = jsonData.CollegeId;
+            IndexNumber = jsonData.IndexNumber;
+            CourseYearDictModelId = db.CourseYearDict.First(x => x.Code == jsonData.CourseYearDictKey).Id;
+            NumberOfBedDictModelId = db.NumberOfBedDict.First(x => x.Code == jsonData.NumberOfBedDictKey).Id;
+            db.Application.Add(this);
+            db.SaveChanges();
+        }
+
+        
+
         [Required]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
