@@ -13,6 +13,10 @@ function loadDict(url,observableArray)
         observableArray(dict);
     })
 }
+function validate()
+{
+    return true;
+}
 function ApplicationViewModel() {
     var self = this;
 
@@ -26,17 +30,23 @@ function ApplicationViewModel() {
     self.saveCompleted = ko.observable(false);
     self.sending = ko.observable(false);
 
-    self.validateAndSave = function (form) {
-        self.sending(true);
-        var jsonData = JSON.parse(ko.toJSON(self.application));
-        $.ajax({
-            url: "/Application/Create",
-            data: jsonData,
-            type: 'POST',
-        });
-        //$.post("/Application/Create", jsonData, function (returnedData) {
-        //    // This callback is executed if the post was successful     
-        //})
+    self.validateAndSave = function () {
+        if (validate()) {
+            $('.mySubmitButton').addClass('btn-disabled');
+            $('.mySubmitButton').attr('disabled', 'disabled');
+            $('.mySubmitButton').prop('disabled', true);
+
+            self.sending(true);
+            var jsonData = JSON.parse(ko.toJSON(self.application));
+            $.ajax({
+                url: "/Application/Create",
+                data: jsonData,
+                type: 'POST',
+            })
+            .success(self.successfulSave)
+            .error(self.errorSave)
+            .complete(function () { self.sending(false) });
+        }
     };
     self.successfulSave = function () {
         self.saveCompleted(true);

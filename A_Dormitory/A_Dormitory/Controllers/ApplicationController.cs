@@ -31,7 +31,7 @@ namespace A_Dormitory.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(ApplicationJsonModel jsonData)
+        public void Create(ApplicationJsonModel jsonData)
         {
             var application = new ApplicationModel(jsonData);
             //if (ModelState.IsValid)
@@ -42,8 +42,8 @@ namespace A_Dormitory.Controllers
             //    return RedirectToAction("Index");
             //}
 
-           
-            return View(jsonData);
+
+            return;
         }
 
         protected override void Dispose(bool disposing)
