@@ -1,5 +1,5 @@
 ﻿@model A_Dormitory.Models.ApplicationModel
-
+@using A_Dormitory.Extension;
 @{
     ViewBag.Title = "Book a room";
 }
@@ -41,7 +41,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CitizenshipDictModelId,  htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CitizenshipDictModelId", null, htmlAttributes: new { @class = "form-control" })
+                
+                
+                @Html.KnockoutJsDropDownDictList("citizenship", "CitizenshipDictModelId", "CitizenshipDictModelId")
                 @Html.ValidationMessageFor(model => model.CitizenshipDictModelId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -110,23 +112,53 @@
             </div>
         </div>
     </div>
+    <b>Ilosc w tablicy</b>
+        <span data-bind='text: citizenship().length'>&nbsp;</span>
+
+        @*<select class="form-control valid" data-bind="options: citizenship,  optionsText: 'Name', optionsValue: 'Code',optionsCaption: 'Choose citizenship...'" id="CitizenshipDictModelId" name="CitizenshipDictModelId"></select>*@
+
 }
 
-<div>
-    @Html.ActionLink("Back", "Index")
-</div>
+            <div>
+                @Html.ActionLink("Back", "Index")
+            </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        function ApplicationViewModel()
-        {
-            var self = this;
-            
-            //Data
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script>
+                    //Js model
+                    var Dict = function (code, name) {
+                        this.Code = ko.observable(code);
+                        this.Name = ko.observable(name);
 
-            self.citizenship = ko.observable();
-        }
-        ko.applyBindings(new ApplicationViewModel());
-    </script>
-}
+                    }
+                    function ApplicationViewModel() {
+                        var self = this;
+
+                        //Data
+
+                        self.citizenship = ko.observableArray();
+
+
+
+                        //Loading
+
+                        var getCitizenship = $.getJSON("/MyApi/Citizenship").success(function (data, status, xhr) {
+                            var citizenship = [];
+                            $.each(data, function (i) {
+                                citizenship.push(new Dict(data[i].Code, data[i].Name));
+                            });
+                            self.citizenship(citizenship);
+                        })
+                            .error(function () {
+                                alert("error");
+                            })
+                            .complete(function () {
+                                console.log("fetch complete + " + this);
+                            });
+                    }
+
+
+                    ko.applyBindings(new ApplicationViewModel());
+                </script>
+            }

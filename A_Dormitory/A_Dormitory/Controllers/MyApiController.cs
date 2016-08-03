@@ -7,14 +7,14 @@ using System.Web.Mvc;
 
 namespace A_Dormitory.Controllers
 {
-    public class ApiController : Controller
+    public class MyApiController : Controller
     {
         // GET: Api
         private DormitoryContext db = new DormitoryContext();
 
         public JsonResult Citizenship()
         {
-            return Json(db.CitizenshipDict);
+            return Json(db.CitizenshipDict, JsonRequestBehavior.AllowGet);
         }
     }
 }

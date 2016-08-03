@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace A_Dormitory.Models
 {
@@ -16,7 +17,9 @@ namespace A_Dormitory.Models
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ScriptIgnore]
         public Guid Id { get; set; }
+        [ScriptIgnore] 
         public DateTime DateCreate { get; set; }
 
         
