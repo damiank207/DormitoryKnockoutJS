@@ -143,7 +143,7 @@
 
                         //Loading
 
-                        var getCitizenship = $.getJSON("/MyApi/Citizenship").success(function (data, status, xhr) {
+                        var getCitizenship = $.getJSON("/Api/Citizenship").success(function (data, status, xhr) {
                             var citizenship = [];
                             $.each(data, function (i) {
                                 citizenship.push(new Dict(data[i].Code, data[i].Name));

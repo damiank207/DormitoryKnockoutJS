@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace A_Dormitory.Controllers
 {
-    public class MyApiController : Controller
+    public class ApiController : Controller
     {
         // GET: Api
         private DormitoryContext db = new DormitoryContext();
