@@ -13,10 +13,10 @@ function loadDict(url,observableArray)
         observableArray(dict);
     })
 }
-function validate()
-{
-    return true;
+function isEmpty(val){
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
 }
+
 function ApplicationViewModel() {
     var self = this;
 
@@ -30,8 +30,52 @@ function ApplicationViewModel() {
     self.saveCompleted = ko.observable(false);
     self.sending = ko.observable(false);
 
+    self.validate = function () {
+        var boolTest = true;
+        var error = '<div class="alert alert-danger"><strong>Error!</strong> This field cannot be blank.</div>';
+        if (isEmpty(self.application.FirstName())) {
+            boolTest = false;
+            $('.FirstNameValid').empty();
+            $('.FirstNameValid').append(error);
+        }
+        else
+        {
+            $('.FirstNameValid').empty();
+        }
+
+        if (isEmpty(self.application.Surname())) {
+            boolTest = false;
+            $('.SurnameValid').empty();
+            $('.SurnameValid').append(error);
+        }
+        else {
+            $('.SurnameValid').empty();
+        }
+
+        if (isEmpty(self.application.AcademicYearOfStudies())) {
+            boolTest = false;
+            $('.AcademicYearOfStudiesValid').empty();
+            $('.AcademicYearOfStudiesValid').append(error);
+        }
+        else {
+            $('.AcademicYearOfStudiesValid').empty();
+        }
+
+        if (isEmpty(self.application.CitizenshipDictCode())) {
+            boolTest = false;
+            $('.CitizenshipDictModelIdValid').empty();
+            $('.CitizenshipDictModelIdValid').append(error);
+        }
+        else {
+            $('.CitizenshipDictModelIdValid').empty();
+        }
+
+
+        return false;
+    };
+
     self.validateAndSave = function () {
-        if (validate()) {
+        if (self.validate()) {
             $('.mySubmitButton').addClass('btn-disabled');
             $('.mySubmitButton').attr('disabled', 'disabled');
             $('.mySubmitButton').prop('disabled', true);
