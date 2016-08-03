@@ -23,6 +23,22 @@ function ApplicationViewModel() {
     self.gender = ko.observableArray();
     self.numberOfBed = ko.observableArray();
 
+    self.saveCompleted = ko.observable(false);
+
+    self.application = {
+        FirstName: ko.observable(),
+        Surname: ko.observable(),
+        AcademicYearOfStudies: ko.observable(),
+        CitizenshipDictCode: ko.observable(),
+        DateOfBirth: ko.observable(),
+        CourseDictKey: ko.observable(),
+        GenderDictKey: ko.observable(),
+        EmailAdress: ko.observable(),
+        CollegeId: ko.observable(),
+        IndexNumber: ko.observable(),
+        CourseYearDictKey: ko.observable(),
+        NumberOfBedDictKey: ko.observable()
+    }
 
 
     //Loading
