@@ -42,11 +42,15 @@ namespace A_Dormitory.Models
         [Required]
         [Display(Name = "Course year")]
         public Guid CourseYearDictModelId { get; set; }
+        [Required]
+        [Display(Name = "Course year")]
+        public Guid NumberOfBedDictModelId { get; set; }
 
         public virtual CitizenshipDictModel CitizenshipDictModel { get; set; }
         public virtual CourseDictModel CourseDictModel { get; set; }
         public virtual GenderDictModel GenderDictModel { get; set; }
-        public CourseYearDictModel CourseYearDictModel { get; set; }
+        public virtual CourseYearDictModel CourseYearDictModel { get; set; }
+        public virtual NumberOfBedDictModel NumberOfBedDictModel { get; set; }
 
     }
 }
