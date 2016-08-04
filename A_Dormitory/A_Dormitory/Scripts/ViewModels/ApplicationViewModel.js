@@ -16,6 +16,15 @@ function loadDict(url,observableArray)
 function isEmpty(val){
     return (val === undefined || val == null || val.length <= 0) ? true : false;
 }
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    if(re.test(email))
+    {
+        return true;
+    }
+    return false;
+
+}
 
 function ApplicationViewModel() {
     var self = this;
@@ -32,7 +41,6 @@ function ApplicationViewModel() {
 
     self.validate = function () {
         var boolTest = true;
-        return true;
         var error = '<div class="alert alert-danger"><strong>Error!</strong> This field cannot be blank.</div>';
         if (isEmpty(self.application.FirstName())) {
             boolTest = false;
@@ -98,7 +106,7 @@ function ApplicationViewModel() {
             $('.CourseDictModelValid').empty();
         }
 
-        if (isEmpty(self.application.EmailAdress())) {
+        if (isEmpty(self.application.EmailAdress()) || !validateEmail(self.application.EmailAdress())) {
             boolTest = false;
             $('.EmailAdressValid').empty();
             $('.EmailAdressValid').append(error);
@@ -166,15 +174,11 @@ function ApplicationViewModel() {
     self.successfulSave = function () {
         self.saveCompleted(true);
         $('.body-content').prepend(
-            '<div class="alert alert-success"><strong>Powodzenie!</strong>Nowy autor został zapisany</div>');
-        setTimeout(function () {
-            location.href = './';
-
-        }, 1000);
+            '<div class="alert alert-success"><strong>Success!</strong>The application for room has been send.</div>');
     };
     self.errorSave = function () {
         $('.body-content').prepend(
-           '<div class="alert alert-alert"><strong>Błąd!</strong>Wystąpił błąd podczas zapisywania autora</div>');
+           '<div class="alert alert-danger"><strong>Error!</strong>Registration error. One or more value is incorrect. Please check your data</div>');
     };
 
     self.application = {

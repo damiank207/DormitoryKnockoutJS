@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace A_Dormitory.Models
@@ -19,6 +21,11 @@ namespace A_Dormitory.Models
         public string IndexNumber { get; set; }
         public string CourseYearDictKey { get; set; }
         public string NumberOfBedDictKey { get; set; }
+        private bool IsValidEmail()
+        {
+            return Regex.IsMatch(EmailAdress,@"/\S+@\S+\.\S+/");
+
+        }
         public bool Validate()
         {
             if (String.IsNullOrEmpty(FirstName) || 
@@ -30,6 +37,7 @@ namespace A_Dormitory.Models
                 String.IsNullOrEmpty(CourseDictKey)||
                 String.IsNullOrEmpty(GenderDictKey)||
                 String.IsNullOrEmpty(EmailAdress)||
+                IsValidEmail() ||
                 String.IsNullOrEmpty(CollegeId)||
                 String.IsNullOrEmpty(IndexNumber)||
                 String.IsNullOrEmpty(CourseYearDictKey)||
