@@ -40,6 +40,7 @@ function ApplicationViewModel() {
     self.sending = ko.observable(false);
 
     self.validate = function () {
+        //is dirty
         var boolTest = true;
         var error = '<div class="alert alert-danger"><strong>Error!</strong> This field cannot be blank.</div>';
         if (isEmpty(self.application.FirstName())) {
