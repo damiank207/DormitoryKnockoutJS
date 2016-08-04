@@ -30,6 +30,7 @@ namespace A_Dormitory.Models
             NumberOfBedDictModelId = db.NumberOfBedDict.First(x => x.Code == jsonData.NumberOfBedDictKey).Id;
             db.Application.Add(this);
             db.SaveChanges();
+            db.Dispose();
         }
 
         

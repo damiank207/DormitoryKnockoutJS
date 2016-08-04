@@ -32,6 +32,7 @@ function ApplicationViewModel() {
 
     self.validate = function () {
         var boolTest = true;
+        return true;
         var error = '<div class="alert alert-danger"><strong>Error!</strong> This field cannot be blank.</div>';
         if (isEmpty(self.application.FirstName())) {
             boolTest = false;
@@ -70,8 +71,78 @@ function ApplicationViewModel() {
             $('.CitizenshipDictModelIdValid').empty();
         }
 
+        if (isEmpty(self.application.DateOfBirth())) {
+            boolTest = false;
+            $('.DateOfBirthValid').empty();
+            $('.DateOfBirthValid').append(error);
+        }
+        else {
+            $('.DateOfBirthValid').empty();
+        }
 
-        return false;
+        if (isEmpty(self.application.GenderDictKey())) {
+            boolTest = false;
+            $('.GenderDictModelValid').empty();
+            $('.GenderDictModelValid').append(error);
+        }
+        else {
+            $('.GenderDictModelValid').empty();
+        }
+
+        if (isEmpty(self.application.CourseDictKey())) {
+            boolTest = false;
+            $('.CourseDictModelValid').empty();
+            $('.CourseDictModelValid').append(error);
+        }
+        else {
+            $('.CourseDictModelValid').empty();
+        }
+
+        if (isEmpty(self.application.EmailAdress())) {
+            boolTest = false;
+            $('.EmailAdressValid').empty();
+            $('.EmailAdressValid').append(error);
+        }
+        else {
+            $('.EmailAdressValid').empty();
+        }
+
+        if (isEmpty(self.application.IndexNumber())) {
+            boolTest = false;
+            $('.IndexNumberValid').empty();
+            $('.IndexNumberValid').append(error);
+        }
+        else {
+            $('.IndexNumberValid').empty();
+        }
+
+        if (isEmpty(self.application.CollegeId())) {
+            boolTest = false;
+            $('.CollegeIdValid').empty();
+            $('.CollegeIdValid').append(error);
+        }
+        else {
+            $('.CollegeIdValid').empty();
+        }
+
+        if (isEmpty(self.application.CourseYearDictKey())) {
+            boolTest = false;
+            $('.CourseYearDictModelIdValid').empty();
+            $('.CourseYearDictModelIdValid').append(error);
+        }
+        else {
+            $('.CourseYearDictModelIdValid').empty();
+        }
+
+        if (isEmpty(self.application.NumberOfBedDictKey())) {
+            boolTest = false;
+            $('.NumberOfBedDictModelIdValid').empty();
+            $('.NumberOfBedDictModelIdValid').append(error);
+        }
+        else {
+            $('.NumberOfBedDictModelIdValid').empty();
+        }
+        return boolTest;
     };
 
     self.validateAndSave = function () {

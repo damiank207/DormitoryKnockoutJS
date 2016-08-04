@@ -33,7 +33,15 @@ namespace A_Dormitory.Controllers
         [HttpPost]
         public void Create(ApplicationJsonModel jsonData)
         {
-            var application = new ApplicationModel(jsonData);
+            if (jsonData.Validate())
+            {
+                var application = new ApplicationModel(jsonData);
+            }
+            else
+            {
+                throw new HttpException(400, "Bad Request");
+            }
+
             //if (ModelState.IsValid)
             //{
             //    applicationModel.Id = Guid.NewGuid();
